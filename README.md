@@ -24,7 +24,8 @@ it in `mit-scheme-12.1/src`.**  (The patch (i) switches off
 some Apple-specific headers in a few files; and (ii)
 disables `macosx-starter`, which isneeded for the
 stand-alone macOS app -- and which I was never able to get
-working.)
+working.)  Apply the patch, i.e., run `patch <
+mit-scheme-12.1-patch` in a shell in the directory  `mit-scheme-12.1/src`.
 	  
 1. **Build MIT Scheme as usual**
 	  
