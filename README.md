@@ -12,9 +12,16 @@ A little bit of context: for reasons given elsewhere, the
 MIT Scheme compiler currently won't work on Apple Silicon.
 So if you want to use MIT Scheme with native code
 compilation on a Mac, you will either need to run it on an
-Intel Mac or on Apple Silicon with Rosetta.
+Intel Mac or on Apple Silicon with Rosetta.  Additionally,
+while you can install MIT Scheme using Apple's clang-based
+toolchain, the resulting native code compiler is partially
+broken (for reasons that remain mysterious to me).  But
+building using GCC seems to solve the problem.  These notes
+describe how to build MIT Scheme using GCC, which means
+disabling some Apple-specific bits of code.  In particular,
+I don't know how to make a stand-alone Mac app.
 
-Also, a bit of clarification: these notes talk about
+Another bit of clarification: these notes talk about
 "building" MIT Scheme.  It is useful to know that one can
 view MIT Scheme as consisting of two parts: "microcode"
 written in C (providing basic runtime support), and
