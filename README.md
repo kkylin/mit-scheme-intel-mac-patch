@@ -1,6 +1,4 @@
-# mit-scheme-intel-mac-patch
-
-* Installing MIT/GNU Scheme on macOS
+# Installing MIT/GNU Scheme on macOS
 
 These are my notes for installing <a
 href="https://www.gnu.org/software/mit-scheme/">MIT/GNU
