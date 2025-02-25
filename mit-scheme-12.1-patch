@@ -1,0 +1,145 @@
+diff --git a/microcode/configure b/microcode/configure
+index c1c5884..9a76cf0 100755
+--- a/microcode/configure
++++ b/microcode/configure
+@@ -6418,7 +6418,7 @@ printf "%s\n" "$as_me: Compiling for macOS version ${MACOS}" >&6;}
+     LDFLAGS="${LDFLAGS} ${MACOS_CFLAGS} -Wl,-syslibroot,${MACOS_SYSROOT}"
+     LDFLAGS="${LDFLAGS} -framework CoreFoundation"
+     LIARC_LDFLAGS="${LIARC_LDFLAGS} -bundle -bundle_loader ${LIARC_LOADER}"
+-    AUX_PROGRAMS="${AUX_PROGRAMS} macosx-starter"
++    # AUX_PROGRAMS="${AUX_PROGRAMS} macosx-starter"
+     ;;
+ netbsd*)
+     DO_GCC_TESTS=yes
+diff --git a/microcode/confshared.h b/microcode/confshared.h
+index 2aca540..f9eee24 100644
+--- a/microcode/confshared.h
++++ b/microcode/confshared.h
+@@ -131,7 +131,7 @@ USA.
+ #endif
+ 
+ /* This detection should probably be done in configure.ac rather than here. */
+-#if (defined (__APPLE__))
++#if (defined (__REALLY_ENABLE_APPLE__))
+ #  if ((defined (__clang_major__)) && (__clang_major__ >= 12))
+ #    define HAVE_FALLTHROUGH_ATTRIBUTE 1
+ #  endif
+diff --git a/microcode/option.c b/microcode/option.c
+index 784cae4..9dc0529 100644
+--- a/microcode/option.c
++++ b/microcode/option.c
+@@ -107,7 +107,7 @@ bool option_disable_core_dump;
+ bool option_batch_mode;
+ bool option_show_version;
+ bool option_show_help;
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   bool option_macosx_application;
+ #endif
+ 
+@@ -211,7 +211,7 @@ for the band.\n\
+   Specifies that Scheme should not generate a core dump under any\n\
+   circumstances.\n\
+ "
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+ "\n\
+ --macosx-application\n\
+   Specifies that Scheme is running as a Mac OS X application.\n\
+@@ -219,7 +219,7 @@ for the band.\n\
+   launched from an icon, and should not be given under other\n\
+   circumstances.\n\
+ "
+-#endif /* __APPLE__ */
++#endif /* __REALLY_ENABLE_APPLE__ */
+ "\n\
+ --prepend-library DIRNAME\n\
+   Adds DIRNAME to the front of the library search path.  This option\n\
+@@ -490,7 +490,7 @@ parse_standard_options (int argc, const char ** argv)
+   option_argument ("help", false, (&option_show_help));
+   option_argument ("interactive", false, (&option_force_interactive));
+   option_argument ("library", true, (&option_raw_library));
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   option_argument ("macosx-application", false, (&option_macosx_application));
+ #endif
+   option_argument ("nocore", false, (&option_disable_core_dump));
+@@ -913,7 +913,7 @@ read_command_line_options (int argc, const char ** argv)
+ 
+   if (option_library_path != 0)
+     free_parsed_path (option_library_path);
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   const char * main_bundle_path = (macosx_main_bundle_dir ());
+   if (main_bundle_path != 0)
+     {
+diff --git a/microcode/option.h b/microcode/option.h
+index 7e66cc2..6f8d10f 100644
+--- a/microcode/option.h
++++ b/microcode/option.h
+@@ -42,7 +42,7 @@ extern bool option_disable_core_dump;
+ extern bool option_batch_mode;
+ extern bool option_show_help;
+ extern bool option_show_version;
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   extern bool option_macosx_application;
+ #endif
+ 
+diff --git a/microcode/pruxenv.c b/microcode/pruxenv.c
+index a5ae6f3..d69bd24 100644
+--- a/microcode/pruxenv.c
++++ b/microcode/pruxenv.c
+@@ -263,7 +263,7 @@ DEFINE_PRIMITIVE ("MACOSX-MAIN-BUNDLE-DIR",
+ 		  Prim_macosx_main_bundle_dir, 0, 0, 0)
+ {
+   PRIMITIVE_HEADER (0);
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   {
+     const char * path = (macosx_main_bundle_dir ());
+     unsigned int n_words;
+diff --git a/microcode/uxtop.c b/microcode/uxtop.c
+index bd4e143..cb355b5 100644
+--- a/microcode/uxtop.c
++++ b/microcode/uxtop.c
+@@ -36,7 +36,7 @@ USA.
+ #include "object.h"
+ #include "extern.h"
+ 
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+ #  include <CoreServices/CoreServices.h>
+    extern const char * OS_current_user_home_directory (void);
+    static CFURLRef macosx_default_band_url (void);
+@@ -102,7 +102,7 @@ OS_initialize (void)
+ #if defined(_SUNOS) || defined(_SUNOS3) || defined(_SUNOS4)
+   vadvise (VA_ANOM);		/* Anomalous paging, don't try to guess. */
+ #endif
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+   /* If in MacOS X application bundle, force working directory to
+      user's home directory.  */
+   if (macosx_in_app_p ())
+@@ -191,7 +191,7 @@ OS_restore_external_state (void)
+   UX_ctty_restore_external_state ();
+ }
+ 
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+ 
+ const char *
+ macosx_main_bundle_dir (void)
+diff --git a/microcode/uxtop.h b/microcode/uxtop.h
+index 07784ff..6511e27 100644
+--- a/microcode/uxtop.h
++++ b/microcode/uxtop.h
+@@ -32,7 +32,7 @@ USA.
+ 
+ extern void UX_dump_core (void);
+ 
+-#ifdef __APPLE__
++#ifdef __REALLY_ENABLE_APPLE__
+    extern bool macosx_in_app_p (void);
+    extern const char * macosx_main_bundle_dir (void);
+ #endif
