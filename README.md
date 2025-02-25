@@ -36,7 +36,7 @@ version).
 What follows are instructions for Intel Macs.  It assumes
 familiarity with working from the command-line.  For Apple
 Silicon, these steps work but you'll need to to install GCC
-targeting Intel; see <a href="#apple-silicon"> for
+targeting Intel; see <a href="#apple-silicon">here</a> for
 instructions.
 
 1. **Install GCC.**  I use Homebrew but you can use
@@ -74,6 +74,7 @@ sudo make install
 ```
 
 <a name="apple-silicon">
+
 # Apple Silicon
 
 On Apple Silicon, you'll need to do the following first,
