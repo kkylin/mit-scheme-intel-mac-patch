@@ -57,10 +57,15 @@ Apple-specific headers in a few files; and (ii) disables
 	  `/usr/local/include`, respectively.  If you have XCode
 	  installed, you may also want to unset `SDKROOT` if
 	  it's defined.
-	  
-   - `./configure`
-   - `make`
-   - `sudo make install`
+
+   - Then in your shell:
+```
+
+./configure
+make
+sudo make install
+
+```
 
 <a name="apple-silicon">
 # Apple Silicon
@@ -108,12 +113,14 @@ Notes:
 1. From David Gray: "For anybody who needs macports over
 homebrew I did these extra steps to select the correct
 compiler:"
+```
 
-    sudo port install gcc14 
-    port select --list gcc
-    sudo port select --set gcc mp-gcc14
-    hash -r
+sudo port install gcc14 
+port select --list gcc
+sudo port select --set gcc mp-gcc14
+hash -r
 
+```
 1. You may also try cross-compiling to Intel or using a
 container.  I didn't go down either of those routes.
 
