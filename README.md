@@ -60,11 +60,9 @@ Apple-specific headers in a few files; and (ii) disables
 
    - Then in your shell:
 ```
-
 ./configure
 make
 sudo make install
-
 ```
 
 <a name="apple-silicon">
@@ -114,12 +112,10 @@ Notes:
 homebrew I did these extra steps to select the correct
 compiler:"
 ```
-
 sudo port install gcc14 
 port select --list gcc
 sudo port select --set gcc mp-gcc14
 hash -r
-
 ```
 1. You may also try cross-compiling to Intel or using a
 container.  I didn't go down either of those routes.
