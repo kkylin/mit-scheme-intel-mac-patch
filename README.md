@@ -66,7 +66,7 @@ download the Homebrew tarball, unpack it into
 `/usr/local/homebrew`, then run this version of Homebrew in
 your Intel-Terminal (see above).  You may need to create and
 change ownership / permissions on a few directories under
-~/usr/local~ to make Homebrew happy.  After this, use your
+`/usr/local` to make Homebrew happy.  After this, use your
 Intel version of ~brew~ to install GCC.  Use this version of
 GCC to build MIT Scheme as outlined above.
 
