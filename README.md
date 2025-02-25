@@ -136,10 +136,10 @@ to add.
 
 1. The insight to use GCC rather than Apple's Clang is due
    to David Gray; see <a
-   href="https://lists.gnu.org/archive/html/mit-scheme-users/2024-12/threads.html">this
-   thread</a> and <a
-   href="https://lists.gnu.org/archive/html/mit-scheme-users/2025-02/threads.html">this
-   one"</a> for context
+   href="https://lists.gnu.org/archive/html/mit-scheme-users/2024-12/threads.html">here</a>
+   and <a
+   href="https://lists.gnu.org/archive/html/mit-scheme-users/2025-02/threads.html">here</a>
+   for context
 
 1. The Apple Silicon instructions are based largely on <a
    href="https://kennethfriedman.org/thoughts/2021/mit-scheme-on-apple-silicon/">Kenneth
