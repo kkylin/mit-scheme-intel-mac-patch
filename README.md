@@ -16,7 +16,7 @@ Intel.  See below for instructions.
 
 <ol>
 
-<li> **Install GCC.**  I use Homebrew but you can use
+<li> <strong>Install GCC.</strong>  I use Homebrew but you can use
    MacPorts, Fink, or install from source.
 		
 <li> **Download <a
@@ -30,7 +30,7 @@ disables `macosx-starter`, which isneeded for the
 stand-alone macOS app -- and which I was never able to get
 working.)
 	  
-<li>**Build MIT Scheme as usual**
+<li><strong>Build MIT Scheme as usual</strong>
 	  
    <ol>
    
@@ -54,10 +54,10 @@ On Apple Silicon with Rosetta, you'll need to do the
 following first, then follow the steps above:
 <ol>
 
-<li> **Install Rosetta** if you don't have it already.
+<li> <strong>Install Rosetta</strong> if you don't have it already.
 `softwareupdate --install-rosetta` should work.
 
-<li> **Make yourself a Rosetta-only Terminal:** duplicate
+<li> <strong>Make yourself a Rosetta-only Terminal:</strong> duplicate
 the Terminal app, rename it something informative, e.g.,
 Intel-Terminal, right-click on the icon, and check "Open
 using Rosetta."  After this, whenever you double-click
@@ -67,7 +67,7 @@ and whose subprocesses also run in Rosetta if possible.
 gives you a shell and ships with a fat binary will work.  I
 use a stock Emacs.)
 
-<li> **Install a GCC that targets Intel CPUs.**  Easiest way
+<li> <strong>Install a GCC that targets Intel CPUs.</strong>  Easiest way
 is to follow the instructions <a
 href="https://docs.brew.sh/Installation">here</a> to
 download the Homebrew tarball, unpack it into
