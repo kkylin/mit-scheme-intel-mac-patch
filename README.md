@@ -21,22 +21,23 @@ Scheme</a> and unpack it.**
 
 1. **Download [this patch](mit-scheme-12.1-patch) and save
 it in `mit-scheme-12.1/src`.**  (The patch (i) switches off
-some Apple-specific headers in a few files; and (ii)
-disables `macosx-starter`, which isneeded for the
-stand-alone macOS app -- and which I was never able to get
-working.)  Apply the patch, i.e., run `patch <
-mit-scheme-12.1-patch` in a shell in the directory  `mit-scheme-12.1/src`.
+Apple-specific headers in a few files; and (ii) disables
+`macosx-starter`, needed for the stand-alone macOS app
+(which I never got working).  Apply the patch, i.e., run
+`patch < mit-scheme-12.1-patch` in a shell in the directory
+`mit-scheme-12.1/src`.
 	  
 1. **Build MIT Scheme as usual**
 	  
-   - Make sure your paths are set up correctly to use
-	  your GCC (especially on Apple Silicon): in
-	  `LIBRARY_PATH` and `C_INCLUDE_PATH`, the GCC versions
-	  of your libraries / include dirs, respectively, should
-	  come first; for Homebrew, usually these are
-	  `/usr/local/lib` and `/usr/local/include`,
-	  respectively.  If you have XCode installed, you may
-	  also want to unset `SDKROOT` if it's defined.
+   - Make sure your paths are set up correctly to use your
+	  GCC (especially on Apple Silicon): in `PATH`,
+	  `LIBRARY_PATH`, and `C_INCLUDE_PATH`, paths to the GCC
+	  binaries / libraries / include dirs, respectively,
+	  should come first; for Homebrew, usually these are
+	  `/usr/local/bin`, `/usr/local/lib`, and
+	  `/usr/local/include`, respectively.  If you have XCode
+	  installed, you may also want to unset `SDKROOT` if
+	  it's defined.
 	  
    - `./configure`
    - `make`
@@ -66,7 +67,7 @@ download the Homebrew tarball, unpack it into
 your Intel-Terminal (see above).  You may need to create and
 change ownership / permissions on a few directories under
 `/usr/local` to make Homebrew happy.  After this, use your
-Intel version of ~brew~ to install GCC.  Use this version of
+Intel version of `brew` to install GCC.  Use this version of
 GCC to build MIT Scheme as outlined above.
 
 Notes:
