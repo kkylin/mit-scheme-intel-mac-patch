@@ -8,9 +8,28 @@ on macOS 15 running GCC-14 (installed via Homebrew).  These
 *should* work on earlier versions of macOS and/or GCC, but
 I've not tested them.  As usual YMMV.
 
-Below are instructions for Intel Macs.  For Apple Silicon,
-these steps work but you'll need to to install GCC targeting
-Intel.  See below for instructions.
+A little bit of context: for reasons given elsewhere, the
+MIT Scheme compiler currently won't work on Apple Silicon.
+So if you want to use MIT Scheme with native code
+compilation on a Mac, you will either need to run it on an
+Intel Mac or on Apple Silicon with Rosetta.
+
+Also, a bit of clarification: these notes talk about
+"building" MIT Scheme.  It is useful to know that one can
+view MIT Scheme as consisting of two parts: "microcode"
+written in C (providing basic runtime support), and
+everything else (almost all in Scheme).  When I talk about
+building MIT Scheme, it is about compiling the C part.
+You'll usually want to use a distribution with the Scheme
+part precompiled (otherwise you'll really want to have a
+working MIT Scheme compiler), which in our case is the Intel
+version.  (The ARM distribution won't run on Macs.)
+
+What follows are instructions for Intel Macs.  It assumes
+familiarity with working from the command-line.  For Apple
+Silicon, these steps work but you'll need to to install GCC
+targeting Intel; see <a href="#apple-silicon"> for
+instructions.
 
 1. **Install GCC.**  I use Homebrew but you can use
    MacPorts, Fink, or install from source.
@@ -42,9 +61,12 @@ Apple-specific headers in a few files; and (ii) disables
    - `./configure`
    - `make`
    - `sudo make install`
-	
-On Apple Silicon with Rosetta, you'll need to do the
-following first, then follow the steps above:
+
+<a name="apple-silicon">
+# Apple Silicon
+
+On Apple Silicon, you'll need to do the following first,
+then follow the steps above:
 
 1. **Install Rosetta** if you don't have it already.
 `softwareupdate --install-rosetta` should work.
@@ -59,13 +81,15 @@ and whose subprocesses also run in Rosetta if possible.
 gives you a shell and ships with a fat binary will work.  I
 use a stock Emacs.)
 
-1. **Install a GCC that targets Intel CPUs.**  Easiest way
-is to follow the instructions <a
+1. **Install a GCC that targets Intel CPUs.** Easiest way is
+to follow the instructions <a
 href="https://docs.brew.sh/Installation">here</a> to
 download the Homebrew tarball, unpack it into
-`/usr/local/homebrew`, then run this version of Homebrew in
-your Intel-Terminal (see above).  You may need to create and
-change ownership / permissions on a few directories under
+`/usr/local/homebrew`, then run this version of Homebrew *in
+your Intel-Terminal* (see above).  For example, if you
+called your Intel version of Homebrew `intel-brew`, then do
+`intel-brew install gcc`.  You may need to create and change
+ownership / permissions on a few directories under
 `/usr/local` to make Homebrew happy.  After this, use your
 Intel version of `brew` to install GCC.  Use this version of
 GCC to build MIT Scheme as outlined above.
@@ -80,3 +104,32 @@ Notes:
    
 1. On Intel Macs, everything seems to work just fine for me,
    but YMMV.  Use at your own risk!
+
+1. From David Gray: "For anybody who needs macports over
+homebrew I did these extra steps to select the correct
+compiler:"
+
+    sudo port install gcc14 
+    port select --list gcc
+    sudo port select --set gcc mp-gcc14
+    hash -r
+
+1. You may also try cross-compiling to Intel or using a
+container.  I didn't go down either of those routes.
+
+## Sources and acknowledgements
+
+1. The insight to use GCC rather than Apple's Clang is due
+   to David Gray.  See <a
+   href="https://lists.gnu.org/archive/html/mit-scheme-users/2024-12/threads.html">this
+   thread</a> and <a
+   href="https://lists.gnu.org/archive/html/mit-scheme-users/2025-02/threads.html">this
+   one"</a> for context.
+
+1. The Apple Silicon instructions are based largely on <a
+   href="https://kennethfriedman.org/thoughts/2021/mit-scheme-on-apple-silicon/">Kenneth
+   Friedman's post</a>, with very minor tweaks.
+
+1. The advice on installing Intel-targeting GCC comes from [here](https://www.wisdomgeek.com/development/installing-intel-based-packages-using-homebrew-on-the-m1-mac/).
+
+1. The advice on making `Intel-Terminal` comes from various places around the web.
