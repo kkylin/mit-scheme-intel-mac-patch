@@ -19,14 +19,14 @@ Intel.  See below for instructions.
 <li> <strong>Install GCC.</strong>  I use Homebrew but you can use
    MacPorts, Fink, or install from source.
 		
-<li> **Download <a
+<li> <strong>Download <a
 href="https://www.gnu.org/software/mit-scheme/">MIT/GNU
-Scheme</a> and unpack it.**
+Scheme</a> and unpack it.</strong>
 
-<li> **Download [this patch](mit-scheme-12.1-patch) and save
-it in `mit-scheme-12.1/src`.**  (The patch (i) switches off
-some Apple-specific headers in a few files; and (ii)
-disables `macosx-starter`, which isneeded for the
+<li> <strong>Download [this patch](mit-scheme-12.1-patch)
+and save it in `mit-scheme-12.1/src`.</strong> (The patch
+(i) switches off some Apple-specific headers in a few files;
+and (ii) disables `macosx-starter`, which isneeded for the
 stand-alone macOS app -- and which I was never able to get
 working.)
 	  
@@ -51,24 +51,23 @@ working.)
 </ol>
 
 On Apple Silicon with Rosetta, you'll need to do the
-following first, then follow the steps above:
-<ol>
+following first, then follow the steps above: <ol>
 
-<li> <strong>Install Rosetta</strong> if you don't have it already.
-`softwareupdate --install-rosetta` should work.
+<li> <strong>Install Rosetta</strong> if you don't have it
+already.  `softwareupdate --install-rosetta` should work.
 
-<li> <strong>Make yourself a Rosetta-only Terminal:</strong> duplicate
-the Terminal app, rename it something informative, e.g.,
-Intel-Terminal, right-click on the icon, and check "Open
-using Rosetta."  After this, whenever you double-click
+<li> <strong>Make yourself a Rosetta-only Terminal:</strong>
+duplicate the Terminal app, rename it something informative,
+e.g., Intel-Terminal, right-click on the icon, and check
+"Open using Rosetta."  After this, whenever you double-click
 Intel-Terminal, you'll get a terminal that runs in Rosetta
 and whose subprocesses also run in Rosetta if possible.
 (You don't have to do this with Terminal -- any app that
-gives you a shell and ships with a fat binary will work.  I
-use a stock Emacs.)
+gives you a shell and ships with a fat binary should work.
+I use a stock Emacs.)
 
-<li> <strong>Install a GCC that targets Intel CPUs.</strong>  Easiest way
-is to follow the instructions <a
+<li> <strong>Install a GCC that targets Intel CPUs.</strong>
+Easiest way is to follow the instructions <a
 href="https://docs.brew.sh/Installation">here</a> to
 download the Homebrew tarball, unpack it into
 `/usr/local/homebrew`, then run this version of Homebrew in
