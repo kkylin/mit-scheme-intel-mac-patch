@@ -18,9 +18,11 @@ install MIT Scheme using Apple's clang-based toolchain, the
 resulting native code compiler is partially broken for
 reasons that remain mysterious to me.  But building using
 GCC seems to solve the problem.  These notes describe how to
-build MIT Scheme using GCC, which means disabling some
-Apple-specific bits of code.  In particular, I don't know
-how to make a stand-alone Mac app.
+build MIT Scheme using GCC.  This is mostly quite
+straightforward except GCC doesn't quite know what to do
+with some macOS-specific code, and the instructions below
+explain how to disable those bits of code.  In particular, I
+don't know how to make a stand-alone Mac app.
 
 Another bit of clarification: these notes talk about
 "building" MIT Scheme.  It is useful to know that one can
