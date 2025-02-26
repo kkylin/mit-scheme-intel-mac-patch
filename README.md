@@ -41,6 +41,18 @@ instructions.
 
 1. **Install GCC.**  I use Homebrew but you can use
    MacPorts, Fink, or install from source.
+   
+   - For Homebrew, just do `brew install gcc`.
+   
+   - From David Gray: "For anybody who needs macports over
+homebrew I did these extra steps to select the correct
+compiler:"
+```
+sudo port install gcc14 
+port select --list gcc
+sudo port select --set gcc mp-gcc14
+hash -r
+```
 
 1. **Download <a
 href="https://www.gnu.org/software/mit-scheme/">MIT/GNU
@@ -116,16 +128,6 @@ Notes:
    
 1. On Intel Macs, everything seems to work just fine for me,
    but YMMV.  Use at your own risk!
-
-1. From David Gray: "For anybody who needs macports over
-homebrew I did these extra steps to select the correct
-compiler:"
-```
-sudo port install gcc14 
-port select --list gcc
-sudo port select --set gcc mp-gcc14
-hash -r
-```
 
 1. Instead of installing an Intel version of GCC, you may
 also try cross-compiling or using a container.  I didn't go
